@@ -28,19 +28,12 @@ export default class Xkcd extends React.Component{
       console.log(err.message);
     })
 
-
-
-    
-
-
   }
 
   handleClick(e) {
     e.preventDefault();
     // console.log('random');
-    const min = 1;
-    const max = 100;
-    const random = Math.floor(Math.random() * 50); 
+    const random = Math.floor(Math.random() * 2624); 
     //this.setState({ random });
     fetch(`https://cors.jonathanmartel.info/?url=https://xkcd.com/${random}/info.0.json`)
     .then((response) => {
@@ -51,6 +44,8 @@ export default class Xkcd extends React.Component{
     .then((data) => {
       // bd(data);
       console.log(data);
+      this.setState({ bd: data })
+
       // console.log(this.state.bdAvecID);
     })
     .catch((err) => {
@@ -67,12 +62,28 @@ export default class Xkcd extends React.Component{
     e.preventDefault();
     //place pour faire la validation
     if(this.state.id !== ''){
-      this.state.bd.num = this.state.id;
-      console.log(this.state.bd.num);
+      // this.state.bd.num = this.state.id;
+      console.log(this.state.id);
+      fetch(`https://cors.jonathanmartel.info/?url=https://xkcd.com/${this.state.id}/info.0.json`)
+      .then((response) => {
+        // console.log(response);
+        if(response.ok) return response.json();
+        else throw Error();
+      })
+      .then((data) => {
+        // bd(data);
+        // console.log(data);
+        this.setState({ bd: data })
+
+        // console.log(this.state.bdAvecID);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      })
 
     }else{
-      console.log(this.state.bd);
-      this.state.bd.num = this.state.bd.num;
+      console.log(this.state.bd.num);
+      this.setState({ bd: this.state.bd })
     }
   }
   
