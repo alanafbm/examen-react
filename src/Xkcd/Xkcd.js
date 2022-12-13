@@ -5,7 +5,9 @@ export default class Xkcd extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      bd: {}
+      bd: {},
+      id: '',
+      bdAvecID: {},
     }
   }
   componentDidMount(){
@@ -50,11 +52,11 @@ export default class Xkcd extends React.Component{
     e.preventDefault();
     //place pour faire la validation
     if(this.state.id !== ''){
-      console.log(this.state.bd.num);
+      // console.log(this.state.id);
       this.state.bd.num = this.state.id;
-      // this.props.handleLogin(this.state.courriel);
+      this.props.handleAfficheBD(this.state.id);
     }else{
-      console.log(this.state.bd.num);
+      // console.log(this.state.bd);
       this.state.bd.num = this.state.bd.num;
     }
   }
