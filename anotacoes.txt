@@ -1,0 +1,56 @@
+Toto, un magicien, vous demande de concevoir une application qui lui permet de
+visualiser ses bandes dessinées de geek préférées (xkcd.com). Vous avez le choix de la
+technologie pour votre application (React ou Angular.io).
+L’application doit afficher une bande dessinée de la série. L'information est disponible
+via le service Web en REST de xkcd.com.
+Version React.js et version Angular.io
+
+À partir du fichier examen-react ou examen-ng, vous devez installer les dépendances
+nécessaires (avec npm) pour faire fonctionner React ou Angular. Après, vous devez créer
+un composant qui affiche une bande dessinée. Le composant comprendra un champ
+texte dans lequel l’utilisateur peut entrer l’identifiant numérique de la bande dessinée
+désirée. Lorsqu’il appuie sur le bouton « Afficher BD » une requête est envoyée et la
+bande dessinée reçue est affichée. Si le champ est vide, la dernière BD est affichée. Si
+l’utilisateur appuie sur « Afficher BD aléatoire », c’est une bande dessinée aléatoire (id
+de 1 à 2624) qui est affichée. En plus du champ texte et des boutons, le composant doit
+afficher l’image de la bande dessinée, son titre, la date de publication et le texte
+alternatif. Le composant doit être affiché sur la page d’accueil. Par défaut et à l'ouverture
+de l'application, la dernière bande dessinée est affichée.
+Vous devez remettre le dossier de l’examen au complet (à l’exception du dossier
+node_modules)
+
+582-41f – Techniques avancées en programmation Web Jonathan Martel
+Pondération : 20 %
+API XKCD1
+
+Pour recevoir la dernière BD :
+GET : https://cors.jonathanmartel.info/?url=https://xkcd.com/info.0.json
+Pour recevoir une BD spécifique (ici id 1808) :
+GET : https://cors.jonathanmartel.info/?url=https://xkcd.com/1808/info.0.json
+Lien vers la documentation officielle : https://xkcd.com/json.html
+Exemple de données :
+    {
+        "day": "8",
+        "month": "3",
+        "year": "2017",
+        "num": 1808,
+        "link": "",
+        "news": "",
+        "title": "Hacking",
+        "safe_title": "Hacking",
+        "transcript": "",
+        "alt": "The dump also contains a list of millions of prime factors, a
+        0-day Tamagotchi exploit, and a technique for getting gcc and bash to
+        execute arbitrary code.",
+        "img": "https://imgs.xkcd.com/comics/hacking.png",
+    }
+Critères d’évaluation React ou Angular (45 points) :
+Installer les dépendances nécessaires (node_modules) 5 points
+Requête sur l'api xkcd (React : avec fetch; Angular : le httpClient
+dans le service xkcd)
+5 points
+Affichage de la dernière bande dessinée 15 points
+Affichage d'une bande dessinée aléatoire 10 points
+Fonctionnement du champs texte et des boutons 10 points
+Bonus :
+• Réussir les deux options 5 % de bonus sur la note finale du cours
